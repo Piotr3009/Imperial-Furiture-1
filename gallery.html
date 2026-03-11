@@ -57,8 +57,28 @@
 </head>
 <body>
 
-  <nav id="if-nav"></nav>
-  <div id="mob-menu"></div>
+  <nav id="if-nav">
+    <a href="index.html" class="logo-wrap">
+      <div class="silver-line"></div>
+      <span class="logo">Imperial</span>
+      <span class="logo">Furniture</span>
+      <div class="silver-line"></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html"    data-page="index">Home</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="shop.html"     data-page="shop">Shop</a></li>
+      <li><a href="gallery.html"  data-page="gallery">Gallery</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="hamburger" id="ham"><span></span><span></span><span></span></div>
+  </nav>
+  <div id="mob-menu">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
 
   <div class="gal-hero">
     <div class="gal-hero-inner">
@@ -105,27 +125,61 @@
     </div>
   </div>
 
-  <footer id="if-footer"></footer>
+  <footer id="if-footer">
+    <div class="ft-top-line"></div>
+    <div class="ft-grid">
+      <div>
+        <div class="ft-logo-block">
+          <div class="silver-line"></div>
+          <span class="ft-logo">Imperial Furniture</span>
+          <div class="silver-line"></div>
+        </div>
+        <p class="ft-brand-text">Luxury furniture born from a passion for craft.<br/>Every project unique. Every piece — for a lifetime.</p>
+      </div>
+      <div class="ft-col"><h4>Navigation</h4><ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul></div>
+      <div class="ft-col"><h4>Collections</h4><ul>
+        <li><a href="shop.html">Noir</a></li>
+        <li><a href="shop.html">Blanc Ivoire</a></li>
+        <li><a href="shop.html">Grand Salon</a></li>
+        <li><a href="shop.html">Bespoke</a></li>
+      </ul></div>
+      <div class="ft-col"><h4>Address</h4><ul>
+        <li><a href="#">14 Chiltern Street</a></li>
+        <li><a href="#">London W1U 7PY</a></li>
+        <li><a href="tel:+442071234567">+44 20 7123 4567</a></li>
+        <li><a href="mailto:atelier@imperialfurniture.co.uk">atelier@imperialfurniture.co.uk</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bottom">
+      <p>&copy; 2025 Imperial Furniture. All rights reserved.</p>
+      <p>Privacy Policy &nbsp;&middot;&nbsp; Portfolio</p>
+    </div>
+  </footer>
 
-  <script src="nav.js"></script>
-  <script src="footer.js"></script>
-  <script src="main.js"></script>
   <script>
-    function filterGal(cat, btn) {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      document.querySelectorAll('.gal-item').forEach(c => {
-        c.style.display = (cat === 'all' || c.dataset.cat === cat) ? '' : 'none';
+    /* shared inline JS — active nav link + hamburger */
+    (function(){
+      var page = location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('.nav-links a[data-page]').forEach(function(a){
+        if(a.dataset.page && page.startsWith(a.dataset.page)) a.classList.add('active');
       });
-    }
-    function openLb(title, sub) {
-      document.getElementById('lb-title').textContent = title;
-      document.getElementById('lb-sub').textContent = sub;
-      document.getElementById('lightbox').classList.add('open');
-    }
-    function closeLb(e) {
-      if (e.target === document.getElementById('lightbox')) document.getElementById('lightbox').classList.remove('open');
-    }
+      var ham = document.getElementById('ham');
+      var mob = document.getElementById('mob-menu');
+      if(ham && mob){
+        ham.addEventListener('click', function(){ mob.classList.toggle('open'); });
+        mob.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ mob.classList.remove('open'); }); });
+      }
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('in'); });
+      },{threshold:0.1});
+      document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+    })();
   </script>
 </body>
 </html>
