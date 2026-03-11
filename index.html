@@ -1,663 +1,491 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Imperial Furniture — Bespoke Furniture London</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atelier Noir — Bespoke Luxury Furniture</title>
+  <meta name="description" content="Bespoke luxury furniture crafted from oak, walnut, marble, and brushed brass for refined residential interiors." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-
     :root {
-      --navy:        #0A1628;   /* ciemny granat */
-      --navy-hover:  #071020;
-      --cream:       #FAFAF8;
-      --cream2:      #F3F0EA;
-      --cream3:      #E8E4DC;
-      --ink:         #181818;
-      --muted:       #84837C;
-      --s-line:      rgba(160,155,145,0.28);
-      --serif: 'Cormorant Garamond', Georgia, serif;
-      --sans:  'Jost', sans-serif;
+      --black: #0f0f0d;
+      --black-soft: #191916;
+      --ivory: #f6f3ee;
+      --ivory-2: #ece7de;
+      --wood: #8a6a4a;
+      --wood-soft: #aa8762;
+      --text-dark: #1d1c1a;
+      --text-muted: #67625b;
+      --line: rgba(29, 28, 26, 0.14);
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; overflow-x: hidden; }
-    ::-webkit-scrollbar { width: 2px; }
-    ::-webkit-scrollbar-track { background: var(--cream2); }
-    ::-webkit-scrollbar-thumb { background: var(--navy); }
-    ::selection { background: var(--navy); color: #fff; }
-
-    /* ── SILVER SHIMMER
-       Ciemne punkty startowe (#555, #777) dają kontrast na kremowym tle
-       dzięki temu widać srebrny połysk a nie biel
-    ── */
-    .silver {
-      background: linear-gradient(105deg,
-        #484848 0%,
-        #888888 15%,
-        #C4C4C4 28%,
-        #E8E8E8 38%,
-        #F4F4F4 50%,
-        #E0E0E0 62%,
-        #A8A8A8 75%,
-        #686868 88%,
-        #484848 100%
-      );
-      background-size: 260% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: shimmer 5s linear infinite;
-    }
-    @keyframes shimmer {
-      0%   { background-position: 0% center; }
-      100% { background-position: 260% center; }
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 300;
-      height: 62px;
-      background: var(--navy);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 5vw;
-    }
-
-    /* Logo — duże, wyraźne */
-    .logo {
+    body {
       font-family: var(--sans);
-      font-size: 1rem;
-      font-weight: 300;
-      letter-spacing: 0.45em;
+      background: var(--ivory);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: min(1120px, 92vw);
+      margin: 0 auto;
+    }
+
+    /* Top navigation */
+    .site-nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      height: 76px;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      backdrop-filter: blur(8px);
+      background: rgba(15, 15, 13, 0.72);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .nav-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: min(1200px, 94vw);
+      margin: 0 auto;
+    }
+    .logo {
+      letter-spacing: 0.28em;
       text-transform: uppercase;
-      text-decoration: none;
-      color: rgba(255,255,255,0.92);
-      white-space: nowrap;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: #fff;
     }
-
-    .nav-links { list-style: none; display: flex; gap: 2.5rem; }
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+    }
     .nav-links a {
-      font-size: 0.58rem; font-weight: 300;
-      letter-spacing: 0.35em; text-transform: uppercase;
-      text-decoration: none; color: rgba(255,255,255,0.45);
-      transition: color 0.3s; position: relative;
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-size: 0.76rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.25s ease;
     }
-    .nav-links a::after {
-      content: ''; position: absolute; bottom: -4px; left: 0;
-      width: 0; height: 1px; background: rgba(255,255,255,0.35);
-      transition: width 0.3s;
-    }
-    .nav-links a:hover { color: rgba(255,255,255,0.95); }
-    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover { color: #fff; }
 
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-    .hamburger span { display: block; width: 22px; height: 1px; background: rgba(255,255,255,0.6); }
+    /* Shared type and spacing */
+    section { padding: 7rem 0; }
+    .eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--wood);
+      margin-bottom: 1rem;
+    }
+    h1, h2, h3 { font-family: var(--serif); font-weight: 600; letter-spacing: 0.02em; }
+    h2 { font-size: clamp(2rem, 4.4vw, 3.7rem); line-height: 1.18; }
+    p { color: var(--text-muted); font-size: 1rem; }
 
-    .mob-menu {
-      display: none; position: fixed; inset: 62px 0 0; z-index: 299;
-      flex-direction: column; align-items: center; justify-content: center; gap: 3rem;
-      background: var(--navy);
-    }
-    .mob-menu.open { display: flex; }
-    .mob-menu a {
-      font-family: var(--serif); font-size: 2.8rem; font-weight: 400;
-      color: rgba(255,255,255,0.85); text-decoration: none;
-      letter-spacing: 0.05em; transition: color 0.3s;
-    }
-    .mob-menu a:hover { color: #fff; }
-
-    /* ── HERO ── */
-    #hero {
-      display: grid; grid-template-columns: 55% 45%;
-      min-height: 100vh; padding-top: 62px;
-    }
-    .hero-img {
-      position: relative; overflow: hidden; background: var(--cream2);
-    }
-    .hero-img .bg {
-      position: absolute; inset: 0;
-      background: url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1200&auto=format&fit=crop&q=85') center/cover no-repeat;
-      transform: scale(1.04);
-      animation: hZoom 14s ease-out forwards;
-    }
-    @keyframes hZoom { to { transform: scale(1); } }
-
-    .hero-text {
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 7rem 6vw 7rem 5vw;
-      background: var(--cream);
-      border-left: 1px solid var(--s-line);
-    }
-    .hero-eyebrow {
-      font-size: 0.52rem; letter-spacing: 0.6em; text-transform: uppercase;
-      color: var(--muted); margin-bottom: 2rem;
-      opacity: 0; animation: aUp 0.9s 0.3s forwards;
-    }
-    .hero-h1 {
-      font-family: var(--serif);
-      font-size: clamp(3rem, 5vw, 5.5rem);
-      font-weight: 500; line-height: 1.08;
-      margin-bottom: 2rem;
-      opacity: 0; animation: aUp 1s 0.55s forwards;
-    }
-    .hero-rule {
-      width: 36px; height: 1px; background: var(--s-line);
-      margin-bottom: 2rem;
-      opacity: 0; animation: aFade 0.8s 0.85s forwards;
-    }
-    .hero-body {
-      font-size: 0.82rem; line-height: 1.95; color: var(--muted);
-      max-width: 320px; margin-bottom: 3rem;
-      opacity: 0; animation: aUp 0.9s 1s forwards;
-    }
-    .hero-cta {
-      display: flex; gap: 0.8rem; flex-wrap: wrap;
-      opacity: 0; animation: aUp 0.9s 1.2s forwards;
-    }
-    @keyframes aUp  { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
-    @keyframes aFade { from { opacity:0; } to { opacity:1; } }
-
-    /* ── BUTTONS ── */
     .btn {
-      display: inline-block; text-decoration: none;
-      font-family: var(--sans); font-size: 0.56rem; font-weight: 300;
-      letter-spacing: 0.4em; text-transform: uppercase;
-      padding: 0.9rem 2.4rem; cursor: pointer; background: none; border: none;
-      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      border: 1px solid transparent;
+      padding: 0.95rem 1.9rem;
+      font-size: 0.76rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: all 0.25s ease;
+      cursor: pointer;
     }
-    .btn-navy { background: var(--navy); color: rgba(255,255,255,0.9); border: 1px solid var(--navy); }
-    .btn-navy:hover { background: var(--navy-hover); border-color: var(--navy-hover); }
-    .btn-outline { border: 1px solid var(--s-line); color: var(--muted); }
-    .btn-outline:hover { border-color: var(--ink); color: var(--ink); }
+    .btn-primary {
+      background: var(--ivory);
+      color: var(--black);
+    }
+    .btn-primary:hover {
+      background: #fff;
+      transform: translateY(-1px);
+    }
+    .btn-dark {
+      background: var(--black);
+      color: var(--ivory);
+    }
+    .btn-dark:hover { background: var(--black-soft); }
 
-    /* ── SHARED ── */
-    .sec { padding: 8rem 5vw; }
-    .eyebrow { font-size: 0.52rem; letter-spacing: 0.6em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.2rem; }
-    .s-title {
-      font-family: var(--serif);
-      font-size: clamp(2.6rem, 4.5vw, 4.5rem);
-      font-weight: 500; line-height: 1.12;
+    /* Hero section with full-screen cinematic image */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      color: #fff;
+      padding: 7rem 0 5rem;
     }
-    .rule { width: 36px; height: 1px; background: var(--s-line); margin: 2rem 0; }
-    .body-text { font-size: 0.84rem; line-height: 1.95; color: var(--muted); }
-    .reveal { opacity:0; transform:translateY(22px); transition:opacity .85s,transform .85s; }
-    .reveal.in { opacity:1; transform:translateY(0); }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, rgba(0,0,0,.55), rgba(0,0,0,.35));
+      z-index: 1;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1616628182509-6f0f95d4f4b0?auto=format&fit=crop&w=2200&q=80') center/cover no-repeat;
+      transform: scale(1.06);
+      animation: heroZoom 11s ease forwards;
+    }
+    @keyframes heroZoom { to { transform: scale(1); } }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: min(960px, 92vw);
+      margin: 0 auto;
+      max-width: 760px;
+    }
+    .hero h1 {
+      font-size: clamp(2.6rem, 7vw, 5.8rem);
+      line-height: 1.06;
+      margin-bottom: 1rem;
+    }
+    .hero .sub {
+      color: rgba(255,255,255,0.85);
+      font-size: clamp(1rem, 2.2vw, 1.35rem);
+      margin-bottom: 2rem;
+    }
 
-    /* ── O NAS ── */
-    #about {
-      padding: 0;
-      display: grid; grid-template-columns: 55% 45%;
-      min-height: 80vh;
-      border-top: 1px solid var(--s-line);
+    /* Two-column about */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 3rem;
+      align-items: center;
     }
-    .about-img {
-      position: relative; overflow: hidden;
-      background: var(--cream2); min-height: 500px;
+    .about-image {
+      border-radius: 2px;
+      overflow: hidden;
+      min-height: 460px;
+      background: var(--ivory-2);
     }
-    .about-img img { width:100%; height:100%; object-fit:cover; display:block; }
-    .about-img .ph {
-      width:100%; height:100%; min-height:500px;
-      display:flex; flex-direction:column;
-      align-items:center; justify-content:center; gap:1rem;
-    }
-    .ph svg { opacity: 0.18; }
-    .ph span { font-size:0.5rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--muted); }
-    .about-text {
-      padding: 7rem 5vw;
-      border-left: 1px solid var(--s-line);
-      display: flex; flex-direction:column; justify-content:center;
-    }
-    .about-nums {
-      display: grid; grid-template-columns: repeat(3,1fr);
-      gap: 2rem; margin-top: 3.5rem; padding-top: 3rem;
-      border-top: 1px solid var(--s-line);
-    }
-    .n-val {
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       display: block;
-      font-family: var(--serif); font-size: 2.8rem; font-weight: 500;
-      color: var(--navy); margin-bottom: 0.3rem;
-    }
-    .n-label { font-size:0.5rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--muted); }
-
-    /* ── KOLEKCJE ── */
-    #collections { background: var(--cream2); border-top: 1px solid var(--s-line); }
-    .coll-head { max-width: 580px; margin-bottom: 4.5rem; }
-
-    .feat {
-      display: grid; grid-template-columns: 1fr 1fr;
-      border: 1px solid var(--s-line); margin-bottom: 1px;
-    }
-    .feat-img {
-      overflow: hidden; min-height: 520px; background: var(--cream3);
-      display: flex; align-items:center; justify-content:center;
-    }
-    .feat-img .ph2 {
-      width:100%; height:100%; min-height:520px;
-      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1rem;
-      transition: transform 0.75s ease;
-    }
-    .feat:hover .feat-img .ph2 { transform: scale(1.03); }
-    .ph2 svg { opacity: 0.15; }
-    .ph2 span { font-size:0.5rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--muted); }
-    .feat-info {
-      padding: 5rem 4vw; border-left: 1px solid var(--s-line);
-      display: flex; flex-direction:column; justify-content:center;
-    }
-    .feat-tag { font-size:0.5rem; letter-spacing:0.55em; text-transform:uppercase; color:var(--muted); margin-bottom:1.2rem; }
-    .feat-title {
-      font-family: var(--serif);
-      font-size: clamp(2rem, 3.2vw, 3.2rem);
-      font-weight: 500; line-height: 1.15; margin-bottom: 1.8rem;
-    }
-    .feat-desc { font-size:0.82rem; line-height:1.95; color:var(--muted); margin-bottom:2.5rem; }
-    .feat-specs {
-      display: flex; flex-direction:column; gap:0.85rem;
-      margin-bottom: 3rem; padding-bottom: 3rem;
-      border-bottom: 1px solid var(--s-line);
-    }
-    .spec-row { display:flex; justify-content:space-between; }
-    .spec-k { font-size:0.5rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--muted); }
-    .spec-v { font-size:0.78rem; color:var(--ink); }
-
-    .coll-minor { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; margin-top:1px; }
-    .minor-item { background:var(--cream); cursor:pointer; border:1px solid var(--s-line); overflow:hidden; }
-    .minor-img {
-      aspect-ratio: 3/4; overflow:hidden; background:var(--cream3);
-      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.8rem;
-      transition: transform 0.7s ease;
-    }
-    .minor-item:hover .minor-img { transform: scale(1.04); }
-    .minor-img svg { opacity:0.15; }
-    .minor-img span { font-size:0.48rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); }
-    .minor-cap { padding:1.4rem 1.6rem; border-top:1px solid var(--s-line); }
-    .minor-cap h3 { font-family:var(--serif); font-size:1.25rem; font-weight:400; color:var(--ink); margin-bottom:0.3rem; }
-    .minor-cap p { font-size:0.5rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); }
-
-    /* ── QUOTE — ciemny granat ── */
-    #quote {
-      background: var(--navy);
-      padding: 8rem 10vw; text-align: center;
-    }
-    #quote blockquote {
-      font-family: var(--serif);
-      font-size: clamp(1.7rem, 3vw, 2.8rem);
-      font-weight: 400; font-style: italic;
-      color: rgba(255,255,255,0.82);
-      line-height: 1.55; max-width: 820px; margin: 0 auto;
-    }
-    #quote cite {
-      display: block; margin-top: 2rem;
-      font-family: var(--sans); font-style: normal;
-      font-size: 0.5rem; letter-spacing: 0.5em; text-transform: uppercase;
-      color: rgba(255,255,255,0.25);
     }
 
-    /* ── MATERIAŁY ── */
-    #materials { background:var(--cream); border-top:1px solid var(--s-line); overflow:hidden; padding:7rem 0; }
-    .mat-head { padding:0 5vw; margin-bottom:3.5rem; }
-    .mat-track {
-      display:flex; overflow-x:auto; scrollbar-width:none;
-      padding:0 5vw; cursor:grab; gap:0;
+    /* Featured projects */
+    .projects {
+      background: #11110f;
+      color: #fff;
     }
-    .mat-track::-webkit-scrollbar { display:none; }
-    .mat-card {
-      flex:0 0 auto; width:265px;
-      padding:2.2rem 2rem;
-      border-right: 1px solid var(--s-line);
+    .projects .eyebrow { color: var(--wood-soft); }
+    .projects p { color: rgba(255,255,255,0.7); }
+    .project-grid {
+      margin-top: 2.5rem;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.15rem;
     }
-    .mat-card:first-child { border-left:1px solid var(--s-line); }
-    .mat-swatch { height:2px; margin-bottom:1.8rem; }
-    .mat-name { font-family:var(--serif); font-size:1.15rem; font-weight:400; color:var(--ink); margin-bottom:0.7rem; }
-    .mat-desc { font-size:0.72rem; line-height:1.8; color:var(--muted); }
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 360px;
+      cursor: pointer;
+    }
+    .project-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+      filter: saturate(0.88);
+    }
+    .project-card .label {
+      position: absolute;
+      left: 1.2rem;
+      bottom: 1.2rem;
+      z-index: 1;
+      color: #fff;
+      background: rgba(0,0,0,.35);
+      padding: 0.35rem 0.6rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .project-card:hover img { transform: scale(1.08); }
 
-    /* ── PROCES ── */
-    #process { background:var(--cream2); border-top:1px solid var(--s-line); }
-    .process-head { max-width:500px; margin-bottom:5.5rem; }
-    .process-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
-    .p-item { padding:3rem 2.5rem; border-left:1px solid var(--s-line); }
-    .p-item:first-child { border-left:none; padding-left:0; }
-    .p-num { font-size:0.48rem; letter-spacing:0.4em; text-transform:uppercase; color:var(--muted); margin-bottom:1.2rem; display:block; }
-    .p-title { font-family:var(--serif); font-size:1.35rem; font-weight:400; color:var(--ink); margin-bottom:1rem; }
-    .p-text { font-size:0.78rem; line-height:1.85; color:var(--muted); }
-
-    /* ── KONTAKT ── */
-    #contact { background:var(--cream); display:grid; grid-template-columns:1fr 1.4fr; border-top:1px solid var(--s-line); }
-    .contact-info { padding:7rem 5vw; border-right:1px solid var(--s-line); }
-    .c-detail { margin-bottom:2.5rem; }
-    .c-detail label { display:block; font-size:0.48rem; letter-spacing:0.5em; text-transform:uppercase; color:var(--muted); margin-bottom:0.6rem; }
-    .c-detail p, .c-detail a { font-size:0.82rem; line-height:1.85; color:var(--ink); text-decoration:none; display:block; transition:color .3s; }
-    .c-detail a:hover { color:var(--navy); }
-    .c-socials { display:flex; gap:0.6rem; margin-top:3rem; }
-    .c-social { width:34px; height:34px; border:1px solid var(--s-line); display:flex; align-items:center; justify-content:center; text-decoration:none; color:var(--muted); font-size:0.5rem; transition:all .3s; }
-    .c-social:hover { border-color:var(--navy); color:var(--navy); }
-    .c-form-wrap { padding:7rem 5vw; }
-    .c-form { display:flex; flex-direction:column; gap:1.5rem; }
-    .f-row { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
-    .f-group { display:flex; flex-direction:column; gap:0.5rem; }
-    .f-group label { font-size:0.48rem; letter-spacing:0.45em; text-transform:uppercase; color:var(--muted); }
-    .f-group input, .f-group textarea, .f-group select {
-      background:transparent; outline:none; resize:none;
-      border:none; border-bottom:1px solid var(--s-line);
-      color:var(--ink); font-family:var(--sans);
-      font-size:0.85rem; font-weight:300; padding:0.7rem 0; transition:border-color .3s;
+    /* Materials */
+    .materials-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.1rem;
+      margin-top: 2rem;
     }
-    .f-group select option { background:var(--cream); }
-    .f-group input:focus, .f-group textarea:focus, .f-group select:focus { border-bottom-color:var(--navy); }
-    .f-group input::placeholder, .f-group textarea::placeholder { color:rgba(132,131,124,.38); font-size:0.8rem; }
-    #form-ok { display:none; font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--navy); margin-top:0.5rem; }
-
-    /* ── FOOTER — ciemny granat ── */
-    footer { background:var(--navy); padding:5rem 5vw 2.5rem; }
-    .ft-grid {
-      display:grid; grid-template-columns:2fr 1fr 1fr 1fr;
-      gap:4rem; margin-bottom:4rem; padding-bottom:4rem;
-      border-bottom:1px solid rgba(255,255,255,0.07);
+    .material {
+      background: #fff;
+      border: 1px solid var(--line);
+      padding: 1.4rem;
+      min-height: 190px;
     }
-    .ft-logo { font-family:var(--sans); font-size:0.92rem; font-weight:300; letter-spacing:0.45em; text-transform:uppercase; color:rgba(255,255,255,0.88); display:block; margin-bottom:1.2rem; }
-    .ft-brand p { font-size:0.74rem; line-height:1.9; color:rgba(255,255,255,0.3); max-width:240px; }
-    .ft-col h4 { font-size:0.48rem; letter-spacing:0.5em; text-transform:uppercase; color:rgba(255,255,255,0.25); margin-bottom:1.5rem; }
-    .ft-col ul { list-style:none; display:flex; flex-direction:column; gap:0.85rem; }
-    .ft-col ul a { font-size:0.74rem; color:rgba(255,255,255,0.4); text-decoration:none; transition:color .3s; }
-    .ft-col ul a:hover { color:rgba(255,255,255,0.9); }
-    .ft-bottom { display:flex; align-items:center; justify-content:space-between; }
-    .ft-bottom p { font-size:0.55rem; letter-spacing:0.1em; color:rgba(255,255,255,0.18); }
-
-    /* ── RESPONSIVE ── */
-    @media(max-width:1024px){
-      #hero { grid-template-columns:1fr; min-height:auto; }
-      .hero-img { min-height:50vh; }
-      .hero-text { border-left:none; border-top:1px solid var(--s-line); }
-      #about { grid-template-columns:1fr; }
-      .about-img { min-height:50vw; }
-      .about-text { border-left:none; border-top:1px solid var(--s-line); }
-      .feat { grid-template-columns:1fr; }
-      .feat-info { border-left:none; border-top:1px solid var(--s-line); }
-      .coll-minor { grid-template-columns:1fr 1fr; }
-      .process-grid { grid-template-columns:1fr 1fr; }
-      .p-item:nth-child(3) { border-left:none; padding-left:0; }
-      #contact { grid-template-columns:1fr; }
-      .contact-info { border-right:none; border-bottom:1px solid var(--s-line); }
-      .ft-grid { grid-template-columns:1fr 1fr; gap:2.5rem; }
+    .material .icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      margin-bottom: 0.8rem;
+      border: 1px solid var(--wood);
+      display: grid;
+      place-items: center;
+      color: var(--wood);
+      font-size: 0.9rem;
+      font-weight: 600;
     }
-    @media(max-width:680px){
-      .nav-links { display:none; }
-      .hamburger { display:flex; }
-      .sec { padding:5rem 6vw; }
-      .coll-minor { grid-template-columns:1fr; }
-      .process-grid { grid-template-columns:1fr; }
-      .p-item:nth-child(3) { border-left:1px solid var(--s-line); padding-left:2.5rem; }
-      .f-row { grid-template-columns:1fr; }
-      .about-nums { grid-template-columns:1fr 1fr; }
-      .ft-grid { grid-template-columns:1fr; gap:2rem; }
-      .ft-bottom { flex-direction:column; gap:0.8rem; text-align:center; }
+    .material h3 { font-size: 1.35rem; margin-bottom: 0.4rem; }
+
+    /* Process */
+    .process-wrap {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .step {
+      background: var(--ivory-2);
+      border: 1px solid var(--line);
+      padding: 1.5rem;
+    }
+    .step .num { color: var(--wood); font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; }
+    .step h3 { font-size: 1.5rem; margin: 0.4rem 0; }
+
+    /* Testimonials */
+    .testimonials {
+      background: #fff;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .testimonial-grid {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+    .quote {
+      padding: 1.5rem;
+      border: 1px solid var(--line);
+      background: var(--ivory);
+    }
+    .quote p { font-size: 0.95rem; }
+    .quote strong { display: block; color: var(--text-dark); margin-top: 1rem; font-weight: 600; }
+
+    /* Final CTA */
+    .final-cta {
+      background: linear-gradient(120deg, #171713, #201c17);
+      color: #fff;
+      text-align: center;
+    }
+    .final-cta p { color: rgba(255,255,255,0.75); margin: 1rem 0 2rem; }
+
+    /* Footer */
+    footer {
+      background: #0d0d0b;
+      color: rgba(255,255,255,0.8);
+      padding: 2.5rem 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-wrap {
+      width: min(1120px, 92vw);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+    }
+    footer a { color: rgba(255,255,255,0.86); text-decoration: none; }
+
+    /* Scroll reveal animation states */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .nav-links { display: none; }
+      .about-grid,
+      .project-grid,
+      .materials-grid,
+      .process-wrap,
+      .testimonial-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .project-card { min-height: 280px; }
+    }
+
+    @media (max-width: 680px) {
+      section { padding: 5.2rem 0; }
+      .about-grid,
+      .project-grid,
+      .materials-grid,
+      .process-wrap,
+      .testimonial-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero { align-items: center; }
+      .hero-content { margin-top: 2.5rem; }
     }
   </style>
 </head>
 <body>
-
-  <!-- NAV -->
-  <nav>
-    <a href="#hero" class="logo">Imperial Furniture</a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#collections">Collections</a></li>
-      <li><a href="#process">Process</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div class="hamburger" id="ham"><span></span><span></span><span></span></div>
-  </nav>
-
-  <div class="mob-menu" id="mob">
-    <a href="#about" class="ml">About</a>
-    <a href="#collections" class="ml">Collections</a>
-    <a href="#process" class="ml">Process</a>
-    <a href="#contact" class="ml">Contact</a>
-  </div>
+  <header class="site-nav">
+    <div class="nav-wrap">
+      <div class="logo">ATELIER NOIR</div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#materials">Materials</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
 
   <!-- HERO -->
-  <section id="hero">
-    <div class="hero-img">
-      <div class="bg"></div>
-    </div>
-    <div class="hero-text">
-      <p class="hero-eyebrow">Craftsmanship · Uncompromising Quality · Time</p>
-      <h1 class="hero-h1">
-        Meble, które<br/>
-        <span class="silver">speak</span><br/>
-        without words
-      </h1>
-      <div class="hero-rule"></div>
-      <p class="hero-body">
-        Projektujemy i wykonujemy meble na zamówienie dla klientów
-        prywatnych i prestiżowych pracowni projektowych.
-        Każdy mebel — jedyny w swoim rodzaju.
-      </p>
-      <div class="hero-cta">
-        <a href="#collections" class="btn btn-navy">Collections</a>
-        <a href="#contact" class="btn btn-outline">Consultation →</a>
-      </div>
+  <section class="hero" id="top">
+    <div class="hero-bg"></div>
+    <div class="hero-content reveal">
+      <p class="eyebrow">Luxury Bespoke Interiors</p>
+      <h1>Bespoke Luxury Furniture</h1>
+      <p class="sub">Designed. Crafted. Installed.</p>
+      <a class="btn btn-primary" href="#contact">Request Consultation</a>
     </div>
   </section>
 
-  <!-- O NAS -->
+  <!-- ABOUT -->
   <section id="about">
-    <div class="about-img reveal">
-      <div class="ph">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="0.7">
-          <rect x="3" y="3" width="18" height="18" rx="1"/>
-          <circle cx="8.5" cy="8.5" r="1.5"/>
-          <path d="m21 15-5-5L5 21"/>
-        </svg>
-        <span>Twoje zdjęcie</span>
+    <div class="container about-grid">
+      <div class="about-image reveal">
+        <img src="https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=1400&q=80" alt="Luxury handcrafted furniture interior" />
       </div>
-    </div>
-    <div class="about-text reveal" style="transition-delay:.2s">
-      <p class="eyebrow">About</p>
-      <h2 class="s-title">Tradycja<br/><span class="silver">doskonałości</span></h2>
-      <div class="rule"></div>
-      <p class="body-text">
-        Od ponad dwudziestu lat tworzymy meble, które wykraczają poza funkcję.
-        Każdy element naszej pracowni powstaje z materiałów najwyższej klasy —
-        wyselekcjonowanych drewien egzotycznych, szlachetnych skór
-        i precyzyjnie obrobionych metali.<br/><br/>
-        Współpracujemy wyłącznie z klientami prywatnymi i prestiżowymi
-        projektantami wnętrz. Nasze realizacje zdobią rezydencje
-        w Warszawie, Londynie, Genewie i Dubaju.
-      </p>
-      <div class="about-nums">
-        <div><span class="n-val">23</span><span class="n-label">Lata doświadczenia</span></div>
-        <div><span class="n-val">480+</span><span class="n-label">Realizacji</span></div>
-        <div><span class="n-val">12</span><span class="n-label">Krajów</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- KOLEKCJE -->
-  <section id="collections" class="sec">
-    <div class="coll-head reveal">
-      <p class="eyebrow">Collections</p>
-      <h2 class="s-title">Każda linia —<br/><span class="silver">inna historia</span></h2>
-    </div>
-
-    <div class="feat reveal" style="transition-delay:.1s">
-      <div class="feat-img">
-        <div class="ph2">
-          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="0.7">
-            <rect x="3" y="3" width="18" height="18" rx="1"/>
-            <circle cx="8.5" cy="8.5" r="1.5"/>
-            <path d="m21 15-5-5L5 21"/>
-          </svg>
-          <span>Twoje zdjęcie</span>
-        </div>
-      </div>
-      <div class="feat-info">
-        <p class="feat-tag">Kolekcja sygnowana</p>
-        <h3 class="feat-title">The <span class="silver">Noir</span><br/>Collection</h3>
-        <p class="feat-desc">
-          Siła w prostocie. Orzech czarny, stalowe detale i skóra anilinowa
-          tworzą meble, których obecność jest nieodparta.
-          Kolekcja dla tych, którzy wiedzą czego chcą.
+      <div class="reveal">
+        <p class="eyebrow">About The Brand</p>
+        <h2>Handcrafted furniture created for timeless interiors.</h2>
+        <p style="margin-top:1.2rem; max-width:50ch;">
+          Atelier Noir is a premium bespoke furniture house shaping residences with precision joinery, artistic detailing, and uncompromising materials. Every commission is designed around the client lifestyle, engineered by master technicians, and delivered with gallery-level finish quality.
         </p>
-        <div class="feat-specs">
-          <div class="spec-row"><span class="spec-k">Materiał</span><span class="spec-v">Orzech czarny</span></div>
-          <div class="spec-row"><span class="spec-k">Wykończenie</span><span class="spec-v">Olej penetrujący</span></div>
-          <div class="spec-row"><span class="spec-k">Detale</span><span class="spec-v">Stal szczotkowana</span></div>
-          <div class="spec-row"><span class="spec-k">Realizacja</span><span class="spec-v">10–14 tygodni</span></div>
-        </div>
-        <a href="#contact" class="btn btn-navy" style="align-self:flex-start">Zapytaj o projekt</a>
-      </div>
-    </div>
-
-    <div class="coll-minor">
-      <div class="minor-item reveal" style="transition-delay:.05s">
-        <div class="minor-img">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="0.7"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-          <span>Twoje zdjęcie</span>
-        </div>
-        <div class="minor-cap"><h3>Blanc Ivoire</h3><p>Dąb bielony · Len · Marmur</p></div>
-      </div>
-      <div class="minor-item reveal" style="transition-delay:.1s">
-        <div class="minor-img">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="0.7"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-          <span>Twoje zdjęcie</span>
-        </div>
-        <div class="minor-cap"><h3>Grand Salon</h3><p>Mahoń · Aksamit · Brąz</p></div>
-      </div>
-      <div class="minor-item reveal" style="transition-delay:.15s">
-        <div class="minor-img">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="0.7"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-          <span>Twoje zdjęcie</span>
-        </div>
-        <div class="minor-cap"><h3>Bespoke</h3><p>Twój projekt · Nasze rzemiosło</p></div>
       </div>
     </div>
   </section>
 
-  <!-- QUOTE -->
-  <section id="quote">
-    <blockquote class="reveal">
-      „Luksus to nie cena — to czas poświęcony na każdy detal,
-      który widzi tylko ten, kto naprawdę patrzy."
-      <cite>— Założyciel Imperial Furniture, Londyn 2001</cite>
-    </blockquote>
+  <!-- FEATURED PROJECTS -->
+  <section class="projects" id="projects">
+    <div class="container">
+      <p class="eyebrow reveal">Featured Projects</p>
+      <h2 class="reveal">A curated portfolio of luxury spaces.</h2>
+      <p class="reveal" style="margin-top:1rem; max-width:58ch;">From penthouse dressing suites to sculptural dining rooms, each project combines minimal architecture with warm natural texture and bespoke detailing.</p>
+
+      <div class="project-grid">
+        <article class="project-card reveal">
+          <img src="https://images.unsplash.com/photo-1616594039964-3f5f5f7f0b96?auto=format&fit=crop&w=1200&q=80" alt="Walnut dining interior project" />
+          <span class="label">Mayfair Residence</span>
+        </article>
+        <article class="project-card reveal">
+          <img src="https://images.unsplash.com/photo-1616137466211-f939a420be84?auto=format&fit=crop&w=1200&q=80" alt="Marble kitchen island project" />
+          <span class="label">Belgravia Penthouse</span>
+        </article>
+        <article class="project-card reveal">
+          <img src="https://images.unsplash.com/photo-1616627457521-86d8f243165f?auto=format&fit=crop&w=1200&q=80" alt="Luxury lounge project with bespoke furniture" />
+          <span class="label">Kensington Villa</span>
+        </article>
+      </div>
+    </div>
   </section>
 
-  <!-- MATERIAŁY -->
+  <!-- MATERIALS -->
   <section id="materials">
-    <div class="mat-head reveal">
-      <p class="eyebrow">Materiały</p>
-      <h2 class="s-title">Surowce<br/><span class="silver">najwyższej próby</span></h2>
-    </div>
-    <div class="mat-track" id="matTrack">
-      <div class="mat-card"><div class="mat-swatch" style="background:linear-gradient(to right,#2A1F15,#3B2B1F)"></div><p class="mat-name">Orzech Czarny</p><p class="mat-desc">Bogate usłojenie, idealne do mebli reprezentacyjnych i gabinetów.</p></div>
-      <div class="mat-card"><div class="mat-swatch" style="background:linear-gradient(to right,#D4C9AA,#E8D9C0)"></div><p class="mat-name">Dąb Bielony</p><p class="mat-desc">Jasna, nordycka elegancja. Ponadczasowy pod każde wnętrze.</p></div>
-      <div class="mat-card"><div class="mat-swatch" style="background:linear-gradient(to right,#6B4F2A,#8B6C42)"></div><p class="mat-name">Mahoń</p><p class="mat-desc">Klasyk british luxury. Ciepły odcień, doskonała obrabialność ręczna.</p></div>
-      <div class="mat-card"><div class="mat-swatch" style="background:#141414"></div><p class="mat-name">Ebony</p><p class="mat-desc">Najgęstsze drewno. Stosowane wyłącznie w precyzyjnych detalach.</p></div>
-      <div class="mat-card"><div class="mat-swatch" style="background:linear-gradient(to right,#808080,#C0C0C0,#E4E4E4,#C0C0C0,#808080)"></div><p class="mat-name">Stal Szczotkowana</p><p class="mat-desc">Nogi, uchwyty i ramy. Polerowane ręcznie — matowy połysk.</p></div>
-      <div class="mat-card"><div class="mat-swatch" style="background:linear-gradient(to right,#E8E3DA,#F2EDE4)"></div><p class="mat-name">Marmur Bianco</p><p class="mat-desc">Blaty i wstawki. Każda płyta unikalna — jak odcisk palca.</p></div>
-    </div>
-  </section>
-
-  <!-- PROCES -->
-  <section id="process" class="sec">
-    <div class="process-head reveal">
-      <p class="eyebrow">Jak zamawiamy</p>
-      <h2 class="s-title">Cztery kroki<br/>do <span class="silver">wyjątkowego mebla</span></h2>
-    </div>
-    <div class="process-grid">
-      <div class="p-item reveal" style="transition-delay:.04s"><span class="p-num">01</span><h3 class="p-title">Konsultacja</h3><p class="p-text">Spotykamy się w atelier lub zdalnie. Słuchamy, rozumiemy Twoją przestrzeń. Bez zobowiązań, bez presji.</p></div>
-      <div class="p-item reveal" style="transition-delay:.1s"><span class="p-num">02</span><h3 class="p-title">Projekt</h3><p class="p-text">Wizualizacje 3D, dobór materiałów, iteracje. Projekt zatwierdzasz osobiście — bez pośpiechu.</p></div>
-      <div class="p-item reveal" style="transition-delay:.16s"><span class="p-num">03</span><h3 class="p-title">Produkcja</h3><p class="p-text">Wyłącznie praca ręczna. Każdy element kontrolowany. Realizacja 8–16 tygodni.</p></div>
-      <div class="p-item reveal" style="transition-delay:.22s"><span class="p-num">04</span><h3 class="p-title">Dostawa</h3><p class="p-text">Dostarczamy i montujemy osobiście. Żadnych kurierów. Mebel trafia do Ciebie gotowy i idealny.</p></div>
-    </div>
-  </section>
-
-  <!-- KONTAKT -->
-  <section id="contact">
-    <div class="contact-info reveal">
-      <p class="eyebrow">Contact</p>
-      <h2 class="s-title">Porozmawiajmy<br/>o <span class="silver">Twoim projekcie</span></h2>
-      <div class="rule"></div>
-      <div class="c-detail"><label>Atelier</label><p>ul. Mokotowska 28<br/>00-561 Warszawa</p></div>
-      <div class="c-detail"><label>Godziny</label><p>Pon–Pt: 10:00–18:00<br/>Sob: 11:00–15:00 (po umówieniu)</p></div>
-      <div class="c-detail"><label>Telefon</label><a href="tel:+48221234567">+48 22 123 45 67</a></div>
-      <div class="c-detail"><label>E-mail</label><a href="mailto:atelier@imperialfurniture.pl">atelier@imperialfurniture.pl</a></div>
-      <div class="c-socials">
-        <a href="#" class="c-social">IG</a>
-        <a href="#" class="c-social">PI</a>
-        <a href="#" class="c-social">HZ</a>
-        <a href="#" class="c-social">LI</a>
+    <div class="container">
+      <p class="eyebrow reveal">Premium Materials</p>
+      <h2 class="reveal">Selected for depth, character, and longevity.</h2>
+      <div class="materials-grid">
+        <article class="material reveal"><div class="icon">O</div><h3>Oak</h3><p>Quarter-sawn oak with elegant grain and rich tonal stability.</p></article>
+        <article class="material reveal"><div class="icon">W</div><h3>Walnut</h3><p>Deep chocolate walnut curated for expressive natural texture.</p></article>
+        <article class="material reveal"><div class="icon">M</div><h3>Marble</h3><p>Book-matched marble surfaces for sculptural and timeless presence.</p></article>
+        <article class="material reveal"><div class="icon">B</div><h3>Brushed Brass</h3><p>Warm satin brass accents that refine every form and junction.</p></article>
       </div>
     </div>
-    <div class="c-form-wrap reveal" style="transition-delay:.15s">
-      <form class="c-form" onsubmit="onSend(event)">
-        <div class="f-row">
-          <div class="f-group"><label>Imię i nazwisko</label><input type="text" placeholder="Jan Kowalski" required/></div>
-          <div class="f-group"><label>E-mail</label><input type="email" placeholder="jan@domena.pl" required/></div>
-        </div>
-        <div class="f-group"><label>Telefon</label><input type="tel" placeholder="+48 600 000 000"/></div>
-        <div class="f-group">
-          <label>Zainteresowanie</label>
-          <select><option value="">— Wybierz —</option><option>Meble na zamówienie</option><option>Konsultacja projektowa</option><option>Kolekcja gotowa</option><option>Współpraca handlowa</option></select>
-        </div>
-        <div class="f-group"><label>Wiadomość</label><textarea rows="6" placeholder="Opisz swój projekt lub wnętrze…"></textarea></div>
-        <button type="submit" class="btn btn-navy" style="align-self:flex-start">Wyślij zapytanie</button>
-        <p id="form-ok">✓ &nbsp;Dziękujemy — odpiszemy w ciągu 24 h</p>
-      </form>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process" style="background: #fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="container">
+      <p class="eyebrow reveal">Our Process</p>
+      <h2 class="reveal">Design → Engineering → Craft → Installation</h2>
+      <div class="process-wrap">
+        <article class="step reveal"><div class="num">01</div><h3>Design</h3><p>Concept sketches and interior integration tailored to your architecture.</p></article>
+        <article class="step reveal"><div class="num">02</div><h3>Engineering</h3><p>Detailed technical development ensures flawless proportion and function.</p></article>
+        <article class="step reveal"><div class="num">03</div><h3>Craft</h3><p>Master artisans hand-finish every element in our specialist workshop.</p></article>
+        <article class="step reveal"><div class="num">04</div><h3>Installation</h3><p>White-glove installation by our dedicated team, precisely on schedule.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="container">
+      <p class="eyebrow reveal">Client Testimonials</p>
+      <h2 class="reveal">Trusted by discerning homeowners.</h2>
+      <div class="testimonial-grid">
+        <article class="quote reveal"><p>“From concept to completion, every detail felt exceptional. The final result transformed our home into a private gallery.”</p><strong>— Eleanor R., Chelsea</strong></article>
+        <article class="quote reveal"><p>“Superb craftsmanship and impeccable communication. The walnut library is now the defining feature of our residence.”</p><strong>— Marcus L., Notting Hill</strong></article>
+        <article class="quote reveal"><p>“The installation team delivered with absolute precision. Elevated, minimal, and deeply luxurious.”</p><strong>— Sophia K., Hampstead</strong></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="final-cta" id="contact">
+    <div class="container reveal">
+      <p class="eyebrow">Begin Your Commission</p>
+      <h2>Start Your Project</h2>
+      <p>Book a private consultation to discuss your vision, timeline, and interior goals.</p>
+      <a href="mailto:studio@ateliernoir.com" class="btn btn-primary">Book Consultation</a>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <div class="ft-grid">
-      <div class="ft-brand">
-        <span class="ft-logo">Imperial Furniture</span>
-        <p>Meble luksusowe tworzone z pasji do rzemiosła. Każdy projekt wyjątkowy. Każdy mebel — na całe życie.</p>
-      </div>
-      <div class="ft-col">
-        <h4>Nawigacja</h4>
-        <ul><li><a href="#about">About</a></li><li><a href="#collections">Collections</a></li><li><a href="#process">Process</a></li><li><a href="#contact">Contact</a></li></ul>
-      </div>
-      <div class="ft-col">
-        <h4>Collections</h4>
-        <ul><li><a href="#">Noir</a></li><li><a href="#">Blanc Ivoire</a></li><li><a href="#">Grand Salon</a></li><li><a href="#">Bespoke</a></li></ul>
-      </div>
-      <div class="ft-col">
-        <h4>Adres</h4>
-        <ul><li><a href="#">ul. Mokotowska 28</a></li><li><a href="#">00-561 Warszawa</a></li><li><a href="tel:+48221234567">+48 22 123 45 67</a></li><li><a href="mailto:atelier@imperialfurniture.pl">atelier@imperialfurniture.pl</a></li></ul>
-      </div>
-    </div>
-    <div class="ft-bottom">
-      <p>© 2025 Imperial Furniture. Wszelkie prawa zastrzeżone.</p>
-      <p>Polityka prywatności &nbsp;·&nbsp; Realizacje</p>
+    <div class="footer-wrap">
+      <div><strong>ATELIER NOIR</strong></div>
+      <div>London · By Appointment</div>
+      <div><a href="mailto:studio@ateliernoir.com">studio@ateliernoir.com</a></div>
+      <div><a href="https://instagram.com" target="_blank" rel="noreferrer noopener">Instagram</a></div>
     </div>
   </footer>
 
   <script>
-    document.getElementById('ham').addEventListener('click', () => {
-      document.getElementById('mob').classList.toggle('open');
-    });
-    document.querySelectorAll('.ml').forEach(l => {
-      l.addEventListener('click', () => document.getElementById('mob').classList.remove('open'));
-    });
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-    function onSend(e) {
-      e.preventDefault();
-      document.getElementById('form-ok').style.display = 'block';
-      e.target.reset();
-    }
-    const t = document.getElementById('matTrack');
-    let down=false, sx, sl;
-    t.addEventListener('mousedown', e => { down=true; sx=e.pageX-t.offsetLeft; sl=t.scrollLeft; t.style.cursor='grabbing'; });
-    t.addEventListener('mouseleave', () => { down=false; t.style.cursor='grab'; });
-    t.addEventListener('mouseup', () => { down=false; t.style.cursor='grab'; });
-    t.addEventListener('mousemove', e => { if(!down) return; e.preventDefault(); t.scrollLeft=sl-(e.pageX-t.offsetLeft-sx)*1.5; });
+    // Smooth reveal animation for sections as the user scrolls.
+    const revealItems = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.16 });
+
+    revealItems.forEach((item) => observer.observe(item));
   </script>
 </body>
 </html>
