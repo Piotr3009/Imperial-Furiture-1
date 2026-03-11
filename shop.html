@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shop — Imperial Furniture</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    :root{
+      --navy:#0A1628;--navy-hover:#071020;
+      --cream:#FAFAF8;--cream2:#F3F0EA;--cream3:#E8E4DC;
+      --ink:#181818;--muted:#84837C;--silver:#9E9E90;
+      --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',sans-serif;
+    }
+    html{scroll-behavior:smooth;}
+    body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-weight:300;overflow-x:hidden;}
+    ::-webkit-scrollbar{width:2px;}::-webkit-scrollbar-thumb{background:var(--navy);}
+    ::selection{background:var(--navy);color:#fff;}
+
+    .silver{background:linear-gradient(105deg,#3A3A3A 0%,#787878 14%,#B8B8B8 26%,#E2E2E2 36%,#F6F6F6 50%,#E2E2E2 64%,#B8B8B8 74%,#787878 86%,#3A3A3A 100%);background-size:260% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 5s linear infinite;}
+    @keyframes shimmer{0%{background-position:0% center;}100%{background-position:260% center;}}
+    .silver-line{height:1px;background:linear-gradient(to right,transparent 0%,#707068 15%,#B8B8AE 40%,#D4D4C8 50%,#B8B8AE 60%,#707068 85%,transparent 100%);}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:300;background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:0 5vw;min-height:76px;}
+    .logo-wrap{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:10px 0;}
+    .logo-wrap .silver-line{width:160px;}
+    .logo{font-family:var(--sans);font-size:1.35rem;font-weight:400;letter-spacing:.5em;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.95);white-space:nowrap;line-height:1;}
+    .nav-links{list-style:none;display:flex;gap:2.5rem;}
+    .nav-links a{font-size:.58rem;font-weight:300;letter-spacing:.35em;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.45);transition:color .3s;position:relative;}
+    .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:rgba(255,255,255,.35);transition:width .3s;}
+    .nav-links a:hover,.nav-links a.active{color:rgba(255,255,255,.95);}
+    .nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+    .hamburger span{display:block;width:22px;height:1px;background:rgba(255,255,255,.6);}
+    .mob-menu{display:none;position:fixed;inset:76px 0 0;z-index:299;flex-direction:column;align-items:center;justify-content:center;gap:3rem;background:var(--navy);}
+    .mob-menu.open{display:flex;}
+    .mob-menu a{font-family:var(--serif);font-size:2.8rem;font-weight:400;color:rgba(255,255,255,.85);text-decoration:none;}
+
+    /* SHOP HERO */
+    .shop-hero{padding-top:76px;background:var(--navy);padding-bottom:0;}
+    .shop-hero-inner{padding:5rem 5vw 4rem;}
+    .shop-hero-inner .eyebrow{font-size:.52rem;letter-spacing:.6em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:1.2rem;}
+    .shop-hero-inner h1{font-family:var(--serif);font-size:clamp(3rem,6vw,6.5rem);font-weight:500;line-height:1.05;color:rgba(255,255,255,.9);margin-bottom:1.5rem;}
+    .shop-hero-inner p{font-size:.82rem;line-height:1.9;color:rgba(255,255,255,.4);max-width:500px;}
+
+    /* FILTERS */
+    .filters{padding:2rem 5vw;border-top:1px solid rgba(255,255,255,.08);border-bottom:2px solid var(--silver);background:var(--navy);display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+    .filter-btn{font-family:var(--sans);font-size:.52rem;font-weight:300;letter-spacing:.35em;text-transform:uppercase;padding:.55rem 1.4rem;border:1px solid rgba(255,255,255,.2);background:none;color:rgba(255,255,255,.45);cursor:pointer;transition:all .25s;}
+    .filter-btn:hover,.filter-btn.active{border-color:var(--silver);color:rgba(255,255,255,.9);}
+
+    /* PRODUCT GRID */
+    .shop-body{padding:4rem 5vw 8rem;}
+    .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(158,158,144,.25);}
+    .product-card{background:var(--cream);overflow:hidden;cursor:pointer;position:relative;}
+    .product-card:hover .product-img-inner{transform:scale(1.04);}
+    .product-img{aspect-ratio:3/4;overflow:hidden;background:var(--cream3);}
+    .product-img-inner{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;transition:transform .75s ease;}
+    .product-img-inner svg{opacity:.15;}
+    .product-img-inner span{font-size:.48rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
+    .product-badge{position:absolute;top:1.2rem;left:1.2rem;background:var(--navy);color:rgba(255,255,255,.85);font-size:.42rem;letter-spacing:.4em;text-transform:uppercase;padding:.35rem .8rem;}
+    .product-info{padding:1.6rem;border-top:1px solid rgba(158,158,144,.3);}
+    .product-collection{font-size:.46rem;letter-spacing:.4em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;}
+    .product-name{font-family:var(--serif);font-size:1.35rem;font-weight:400;color:var(--ink);margin-bottom:.5rem;}
+    .product-material{font-size:.56rem;color:var(--muted);margin-bottom:1rem;}
+    .product-footer{display:flex;align-items:center;justify-content:space-between;}
+    .product-price{font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--navy);}
+    .product-lead{font-size:.46rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);}
+
+    /* FEATURED ROW */
+    .featured-row{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(158,158,144,.25);margin-bottom:1px;}
+    .featured-card{background:var(--cream2);overflow:hidden;cursor:pointer;position:relative;}
+    .featured-card:hover .product-img-inner{transform:scale(1.03);}
+    .featured-card .product-img{aspect-ratio:16/10;}
+    .featured-card .product-info{padding:2rem;}
+    .featured-card .product-name{font-size:1.7rem;}
+
+    /* BESPOKE BANNER */
+    .bespoke-banner{background:var(--navy);padding:5rem 5vw;margin-top:1px;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;border-top:2px solid var(--silver);}
+    .bespoke-banner h2{font-family:var(--serif);font-size:clamp(2rem,4vw,3.8rem);font-weight:500;color:rgba(255,255,255,.9);line-height:1.15;}
+    .bespoke-banner p{font-size:.82rem;line-height:1.9;color:rgba(255,255,255,.4);margin-bottom:2rem;}
+    .btn{display:inline-block;text-decoration:none;font-family:var(--sans);font-size:.56rem;font-weight:300;letter-spacing:.4em;text-transform:uppercase;padding:.9rem 2.4rem;cursor:pointer;background:none;border:none;transition:all .3s;}
+    .btn-light{border:1px solid rgba(255,255,255,.4);color:rgba(255,255,255,.7);}
+    .btn-light:hover{border-color:#fff;color:#fff;}
+    .btn-navy{background:var(--navy);color:rgba(255,255,255,.9);border:1px solid var(--navy);}
+
+    /* FOOTER */
+    footer{background:var(--navy);padding:5rem 5vw 2.5rem;}
+    .ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;margin-bottom:4rem;padding-bottom:4rem;border-bottom:1px solid rgba(255,255,255,.07);}
+    .ft-logo-wrap{margin-bottom:1.2rem;}
+    .ft-logo{font-family:var(--sans);font-size:1.1rem;font-weight:400;letter-spacing:.5em;text-transform:uppercase;color:rgba(255,255,255,.88);display:block;margin-bottom:6px;}
+    .ft-brand p{font-size:.74rem;line-height:1.9;color:rgba(255,255,255,.3);max-width:240px;margin-top:1rem;}
+    .ft-col h4{font-size:.48rem;letter-spacing:.5em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:1.5rem;}
+    .ft-col ul{list-style:none;display:flex;flex-direction:column;gap:.85rem;}
+    .ft-col ul a{font-size:.74rem;color:rgba(255,255,255,.4);text-decoration:none;transition:color .3s;}
+    .ft-col ul a:hover{color:rgba(255,255,255,.9);}
+    .ft-bottom{display:flex;align-items:center;justify-content:space-between;}
+    .ft-bottom p{font-size:.55rem;letter-spacing:.1em;color:rgba(255,255,255,.18);}
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .85s,transform .85s;}
+    .reveal.in{opacity:1;transform:translateY(0);}
+
+    @media(max-width:1024px){.product-grid{grid-template-columns:1fr 1fr;}.featured-row{grid-template-columns:1fr;}.bespoke-banner{grid-template-columns:1fr;}.ft-grid{grid-template-columns:1fr 1fr;gap:2.5rem;}}
+    @media(max-width:680px){.nav-links{display:none;}.hamburger{display:flex;}.product-grid{grid-template-columns:1fr;}.ft-grid{grid-template-columns:1fr;}.ft-bottom{flex-direction:column;gap:.8rem;text-align:center;}.filters{gap:.5rem;}}
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo-wrap">
+      <div class="silver-line"></div>
+      <a href="index.html" class="logo">Imperial Furniture</a>
+      <div class="silver-line"></div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="shop.html" class="active">Shop</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="hamburger" id="ham"><span></span><span></span><span></span></div>
+  </nav>
+  <div class="mob-menu" id="mob">
+    <a href="index.html" class="ml">Home</a>
+    <a href="shop.html" class="ml">Shop</a>
+    <a href="gallery.html" class="ml">Gallery</a>
+    <a href="index.html#contact" class="ml">Contact</a>
+  </div>
+
+  <!-- SHOP HERO -->
+  <div class="shop-hero">
+    <div class="shop-hero-inner">
+      <p class="eyebrow">Imperial Furniture</p>
+      <h1>The <span class="silver">Shop</span></h1>
+      <p>Each piece is crafted to order. Browse our collections and enquire directly — we will guide you through every step.</p>
+    </div>
+  </div>
+
+  <!-- FILTERS -->
+  <div class="filters">
+    <button class="filter-btn active" onclick="filterProducts('all',this)">All Pieces</button>
+    <button class="filter-btn" onclick="filterProducts('seating',this)">Seating</button>
+    <button class="filter-btn" onclick="filterProducts('tables',this)">Tables</button>
+    <button class="filter-btn" onclick="filterProducts('storage',this)">Storage</button>
+    <button class="filter-btn" onclick="filterProducts('bedroom',this)">Bedroom</button>
+    <button class="filter-btn" onclick="filterProducts('lighting',this)">Lighting</button>
+  </div>
+
+  <!-- PRODUCTS -->
+  <div class="shop-body">
+    <!-- FEATURED -->
+    <div class="featured-row" id="featured-row">
+      <div class="featured-card" data-cat="seating">
+        <div class="product-img"><div class="product-img-inner">
+          <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="0.6"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+          <span>Your photo here</span>
+        </div></div>
+        <div class="product-badge">New</div>
+        <div class="product-info">
+          <p class="product-collection">Noir Collection</p>
+          <h3 class="product-name">The <span class="silver">Chiltern</span> Armchair</h3>
+          <p class="product-material">Black walnut frame · Aniline leather · Hand-stitched</p>
+          <div class="product-footer">
+            <span class="product-price">From £8,500</span>
+            <span class="product-lead">12 wk lead time</span>
+          </div>
+        </div>
+      </div>
+      <div class="featured-card" data-cat="tables">
+        <div class="product-img"><div class="product-img-inner">
+          <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="0.6"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+          <span>Your photo here</span>
+        </div></div>
+        <div class="product-badge">Signature</div>
+        <div class="product-info">
+          <p class="product-collection">Grand Salon Collection</p>
+          <h3 class="product-name">The <span class="silver">Berkeley</span> Dining Table</h3>
+          <p class="product-material">Solid mahogany · Bronze inlay · Beeswax finish</p>
+          <div class="product-footer">
+            <span class="product-price">From £22,000</span>
+            <span class="product-lead">14 wk lead time</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRODUCT GRID -->
+    <div class="product-grid" id="product-grid">
+
+      <div class="product-card" data-cat="storage">
+        <div class="product-img"><div class="product-img-inner">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="0.6"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+          <span>Your photo here</span>
+        </div></div>
+        <div class="product-info">
+          <p class="product-collection">Blanc Ivoire</p>
+          <h3 class="product-name">The Marlow Sideboard</h3>
+          <p class="product-material">Bleached oak · Linen panels · Brass</p>
+          <div class="product-footer"><span class="product-price">From £14,200</span><span class="product-lead">10 wk</span></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="seating">
+        <div class="product-img"><div class="product-img-inner">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="0.6"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+          <span>Your photo here</span>
+        </div></div>
+        <div class="product-info">
+          <p class="product-collection">Noir Collection</p>
+          <h3 class="product-name">The Mayfair Sofa</h3>
+          <p class="product-material">Walnut legs · Italian velvet · Feather fill</p>
+          <div class="product-footer"><span class="product-price">From £18,500</span><span class="product-lead">14 wk</span></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="bedroom">
+        <div class="product-img"><div class="product-img-inner">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="0.6"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+          <span>Your photo here</span>
+        </div></div>
+        <div class="product-info">
+          <p class="product-collection">Blanc Ivoire</p>
+          <h3 class="product-name">The Claridge Bed Frame</h3>
+          <p class="product-material">Bleached oak · Linen headboard</p>
+          <div class="product-footer"><span class="product-price">From £9,800</span><span class="product-lead">10 wk</span></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="tables">
+        <div class="product-img"><div class="product-img-inner">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="0.6"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+          <span>Your photo here</span>
+        </div></div>
+        <div class="product-badge">Limited</div>
+        <div class="product-info">
+          <p class="product-collection">Noir Collection</p>
+          <h3 class="product-name">The Ebony Console</h3>
+          <p class="product-material">Ebony veneer · Brushed steel base</p>
+          <div class="product-footer"><span class="product-price">From £6,400</span><span class="product-lead">8 wk</span></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="storage">
+        <div class="product-img"><div class="product-img-inner">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="0.6"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+          <span>Your photo here</span>
+        </div></div>
+        <div class="product-info">
+          <p class="product-collection">Grand Salon</p>
+          <h3 class="product-name">The Savile Bookcase</h3>
+          <p class="product-material">Solid mahogany · Leather shelving</p>
+          <div class="product-footer"><span class="product-price">From £28,000</span><span class="product-lead">16 wk</span></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="lighting">
+        <div class="product-img"><div class="product-img-inner">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="0.6"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+          <span>Your photo here</span>
+        </div></div>
+        <div class="product-info">
+          <p class="product-collection">Bespoke</p>
+          <h3 class="product-name">The Albany Floor Lamp</h3>
+          <p class="product-material">Brushed steel · Hand-sewn linen shade</p>
+          <div class="product-footer"><span class="product-price">From £2,800</span><span class="product-lead">6 wk</span></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="seating">
+        <div class="product-img"><div class="product-img-inner">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="0.6"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+          <span>Your photo here</span>
+        </div></div>
+        <div class="product-info">
+          <p class="product-collection">Grand Salon</p>
+          <h3 class="product-name">The Parliament Chair</h3>
+          <p class="product-material">Mahogany frame · Bronze nailhead trim</p>
+          <div class="product-footer"><span class="product-price">From £4,600</span><span class="product-lead">10 wk</span></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="bedroom">
+        <div class="product-img"><div class="product-img-inner">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="0.6"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+          <span>Your photo here</span>
+        </div></div>
+        <div class="product-info">
+          <p class="product-collection">Noir Collection</p>
+          <h3 class="product-name">The Knightsbridge Dresser</h3>
+          <p class="product-material">Black walnut · Smoked mirror panels</p>
+          <div class="product-footer"><span class="product-price">From £7,200</span><span class="product-lead">12 wk</span></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="tables">
+        <div class="product-img"><div class="product-img-inner">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="0.6"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+          <span>Your photo here</span>
+        </div></div>
+        <div class="product-info">
+          <p class="product-collection">Blanc Ivoire</p>
+          <h3 class="product-name">The Holland Coffee Table</h3>
+          <p class="product-material">Bleached oak · Bianco marble top</p>
+          <div class="product-footer"><span class="product-price">From £5,400</span><span class="product-lead">8 wk</span></div>
+        </div>
+      </div>
+
+    </div><!-- /product-grid -->
+
+    <!-- BESPOKE BANNER -->
+    <div class="bespoke-banner reveal" style="margin-top:1px;">
+      <div>
+        <h2>Can't find<br/>what you're<br/><span class="silver">looking for?</span></h2>
+      </div>
+      <div>
+        <p>Every piece in our atelier can be customised — dimensions, materials, finish, upholstery. Or start from a completely blank page. We will design it with you.</p>
+        <a href="index.html#contact" class="btn btn-light">Start a Bespoke Project</a>
+      </div>
+    </div>
+
+  </div><!-- /shop-body -->
+
+  <!-- FOOTER -->
+  <footer>
+    <div style="height:1px;background:linear-gradient(to right,transparent,#707068,#D4D4C8,#707068,transparent);margin-bottom:4rem;"></div>
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div style="margin-bottom:6px;height:1px;width:140px;background:linear-gradient(to right,transparent,#707068,#D4D4C8,#707068,transparent);"></div>
+        <span class="ft-logo">Imperial Furniture</span>
+        <div style="margin-top:4px;height:1px;width:140px;background:linear-gradient(to right,transparent,#707068,#D4D4C8,#707068,transparent);"></div>
+        <p>Luxury furniture born from a passion for craft. Every project unique. Every piece — for a lifetime.</p>
+      </div>
+      <div class="ft-col"><h4>Navigation</h4><ul><li><a href="index.html">Home</a></li><li><a href="index.html#about">About</a></li><li><a href="shop.html">Shop</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="index.html#contact">Contact</a></li></ul></div>
+      <div class="ft-col"><h4>Collections</h4><ul><li><a href="#">Noir</a></li><li><a href="#">Blanc Ivoire</a></li><li><a href="#">Grand Salon</a></li><li><a href="#">Bespoke</a></li></ul></div>
+      <div class="ft-col"><h4>Address</h4><ul><li><a href="#">14 Chiltern Street</a></li><li><a href="#">London W1U 7PY</a></li><li><a href="tel:+442071234567">+44 20 7123 4567</a></li></ul></div>
+    </div>
+    <div class="ft-bottom"><p>&copy; 2025 Imperial Furniture. All rights reserved.</p><p>Privacy Policy &nbsp;&middot;&nbsp; Portfolio</p></div>
+  </footer>
+
+  <script>
+    document.getElementById('ham').addEventListener('click',()=>document.getElementById('mob').classList.toggle('open'));
+    document.querySelectorAll('.ml').forEach(l=>l.addEventListener('click',()=>document.getElementById('mob').classList.remove('open')));
+    const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in');}),{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    function filterProducts(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const cards = document.querySelectorAll('.product-card, .featured-card');
+      cards.forEach(c => {
+        if(cat==='all' || c.dataset.cat===cat){
+          c.style.display='';
+        } else {
+          c.style.display='none';
+        }
+      });
+      const featuredRow = document.getElementById('featured-row');
+      if(cat!=='all'){
+        const visibleFeat = [...featuredRow.querySelectorAll('.featured-card')].filter(c=>c.style.display!=='none');
+        featuredRow.style.display = visibleFeat.length ? '' : 'none';
+      } else {
+        featuredRow.style.display='';
+      }
+    }
+  </script>
+</body>
+</html>
