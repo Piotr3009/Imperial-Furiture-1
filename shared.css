@@ -89,11 +89,22 @@ body { background: var(--cream); color: var(--ink); font-family: var(--sans); fo
   align-items: flex-start; gap: 4px;
   padding: 8px 0; text-decoration: none;
 }
-.logo-wrap .silver-line { width: 100%; }
+.logo-wrap .silver-line { width: 100%; min-width: 180px; }
 .logo {
-  font-family: var(--sans); font-size: 1.1rem; font-weight: 400;
+  font-family: var(--sans); font-size: 1.43rem; font-weight: 400;
   letter-spacing: .55em; text-transform: uppercase;
-  color: rgba(255,255,255,.95); line-height: 1.25; display: block;
+  line-height: 1.25; display: block;
+  /* Silver shimmer on dark navy */
+  background: linear-gradient(105deg,
+    #707070 0%, #A8A8A8 12%, #D0D0D0 22%,
+    #F0F0F0 32%, #FFFFFF 42%, #F8F8F8 50%,
+    #FFFFFF 58%, #F0F0F0 68%, #D0D0D0 78%,
+    #A8A8A8 88%, #707070 100%);
+  background-size: 260% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 5s linear infinite;
 }
 
 /* Nav links */

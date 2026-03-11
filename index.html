@@ -170,7 +170,7 @@
   <section id="collections" class="sec">
     <div class="coll-head reveal">
       <p class="eyebrow">Collections</p>
-      <h2 class="s-title">Every collection —<br/><span class="silver">a different story</span></h2>
+      <h2 class="s-title"><span class="silver">Every collection —</span><br/><span class="silver">a different story</span></h2>
     </div>
     <div class="feat reveal" style="transition-delay:.1s">
       <div class="feat-img">
@@ -223,7 +223,7 @@
       <div class="c-detail"><label>Atelier</label><p>14 Chiltern Street<br/>London W1U 7PY</p></div>
       <div class="c-detail"><label>Hours</label><p>Mon–Fri: 10:00–18:00<br/>Sat: 11:00–15:00 (by appointment)</p></div>
       <div class="c-detail"><label>Phone</label><a href="tel:+442071234567">+44 20 7123 4567</a></div>
-      <div class="c-detail"><label>Email</label><a href="/cdn-cgi/l/email-protection#bfdecbdad3d6dacdffd6d2cfdacdd6ded3d9cacdd1d6cbcacdda91dcd091cad4"><span class="__cf_email__" data-cfemail="b7d6c3d2dbded2c5f7dedac7d2c5ded6dbd1c2c5d9dec3c2c5d299d4d899c2dc">[email&#160;protected]</span></a></div>
+      <div class="c-detail"><label>Email</label><a href="mailto:atelier@imperialfurniture.co.uk">atelier@imperialfurniture.co.uk</a></div>
       <div class="c-socials">
         <a href="#" class="c-social">IG</a><a href="#" class="c-social">PI</a><a href="#" class="c-social">HZ</a><a href="#" class="c-social">LI</a>
       </div>
@@ -282,7 +282,9 @@
   </footer>
 
   <script>
-    /* shared inline JS — active nav link + hamburger */
+    function onSend(e){ e.preventDefault(); document.getElementById('form-ok').style.display='block'; e.target.reset(); }
+  </script>
+  <script>
     (function(){
       var page = location.pathname.split('/').pop() || 'index.html';
       document.querySelectorAll('.nav-links a[data-page]').forEach(function(a){
@@ -292,7 +294,9 @@
       var mob = document.getElementById('mob-menu');
       if(ham && mob){
         ham.addEventListener('click', function(){ mob.classList.toggle('open'); });
-        mob.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ mob.classList.remove('open'); }); });
+        mob.querySelectorAll('a').forEach(function(a){
+          a.addEventListener('click', function(){ mob.classList.remove('open'); });
+        });
       }
       var io = new IntersectionObserver(function(entries){
         entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('in'); });

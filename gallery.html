@@ -83,7 +83,7 @@
   <div class="gal-hero">
     <div class="gal-hero-inner">
       <p class="eyebrow">Imperial Furniture</p>
-      <h1>The <span class="silver">Gallery</span></h1>
+      <h1><span class="silver">The Gallery</span></h1>
       <p>Every photograph is a finished commission. These are not renders — these are real pieces, in real homes.</p>
     </div>
   </div>
@@ -163,7 +163,6 @@
   </footer>
 
   <script>
-    /* shared inline JS — active nav link + hamburger */
     (function(){
       var page = location.pathname.split('/').pop() || 'index.html';
       document.querySelectorAll('.nav-links a[data-page]').forEach(function(a){
@@ -173,7 +172,9 @@
       var mob = document.getElementById('mob-menu');
       if(ham && mob){
         ham.addEventListener('click', function(){ mob.classList.toggle('open'); });
-        mob.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ mob.classList.remove('open'); }); });
+        mob.querySelectorAll('a').forEach(function(a){
+          a.addEventListener('click', function(){ mob.classList.remove('open'); });
+        });
       }
       var io = new IntersectionObserver(function(entries){
         entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('in'); });
