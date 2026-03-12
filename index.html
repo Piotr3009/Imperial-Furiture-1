@@ -119,6 +119,7 @@
       <li><a href="index.html#about">About</a></li>
       <li><a href="shop.html"     data-page="shop">Shop</a></li>
       <li><a href="gallery.html"  data-page="gallery">Gallery</a></li>
+      <li><a href="bespoke.html"   data-page="bespoke">Bespoke</a></li>
       <li><a href="index.html#contact">Contact</a></li>
     </ul>
     <div class="hamburger" id="ham"><span></span><span></span><span></span></div>
@@ -127,6 +128,7 @@
     <a href="index.html">Home</a>
     <a href="shop.html">Shop</a>
     <a href="gallery.html">Gallery</a>
+    <a href="bespoke.html">Bespoke</a>
     <a href="index.html#contact">Contact</a>
   </div>
 
@@ -223,7 +225,7 @@
       <div class="c-detail"><label>Atelier</label><p>14 Chiltern Street<br/>London W1U 7PY</p></div>
       <div class="c-detail"><label>Hours</label><p>Mon–Fri: 10:00–18:00<br/>Sat: 11:00–15:00 (by appointment)</p></div>
       <div class="c-detail"><label>Phone</label><a href="tel:+442071234567">+44 20 7123 4567</a></div>
-      <div class="c-detail"><label>Email</label><a href="mailto:atelier@imperialfurniture.co.uk">atelier@imperialfurniture.co.uk</a></div>
+      <div class="c-detail"><label>Email</label><a href="/cdn-cgi/l/email-protection#2e4f5a4b42474b5c6e47435e4b5c474f42485b5c40475a5b5c4b004d41005b45"><span class="__cf_email__" data-cfemail="e08194858c898592a0898d90859289818c8695928e8994959285ce838fce958b">[email&#160;protected]</span></a></div>
       <div class="c-socials">
         <a href="#" class="c-social">IG</a><a href="#" class="c-social">PI</a><a href="#" class="c-social">HZ</a><a href="#" class="c-social">LI</a>
       </div>
@@ -260,6 +262,7 @@
         <li><a href="index.html#about">About</a></li>
         <li><a href="shop.html">Shop</a></li>
         <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="bespoke.html">Bespoke</a></li>
         <li><a href="index.html#contact">Contact</a></li>
       </ul></div>
       <div class="ft-col"><h4>Collections</h4><ul>
@@ -272,7 +275,7 @@
         <li><a href="#">14 Chiltern Street</a></li>
         <li><a href="#">London W1U 7PY</a></li>
         <li><a href="tel:+442071234567">+44 20 7123 4567</a></li>
-        <li><a href="mailto:atelier@imperialfurniture.co.uk">atelier@imperialfurniture.co.uk</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#5a3b2e3f36333f281a33372a3f28333b363c2f2834332e2f283f743935742f31"><span class="__cf_email__" data-cfemail="660712030a0f0314260f0b1603140f070a001314080f1213140348050948130d">[email&#160;protected]</span></a></li>
       </ul></div>
     </div>
     <div class="ft-bottom">
@@ -281,7 +284,7 @@
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     function onSend(e){ e.preventDefault(); document.getElementById('form-ok').style.display='block'; e.target.reset(); }
   </script>
   <script>
@@ -294,15 +297,4 @@
       var mob = document.getElementById('mob-menu');
       if(ham && mob){
         ham.addEventListener('click', function(){ mob.classList.toggle('open'); });
-        mob.querySelectorAll('a').forEach(function(a){
-          a.addEventListener('click', function(){ mob.classList.remove('open'); });
-        });
-      }
-      var io = new IntersectionObserver(function(entries){
-        entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('in'); });
-      },{threshold:0.1});
-      document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
-    })();
-  </script>
-</body>
-</html>
+        mob.querySelectorAll('a'

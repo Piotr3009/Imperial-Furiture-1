@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bespoke Projects — Imperial Furniture</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="shared.css"/>
+  <style>
+    /* ── PAGE-SPECIFIC: bespoke.html ── */
+
+    /* HERO */
+    .bsp-hero { background:var(--navy); margin-top:-82px; padding-top:82px; }
+    .bsp-hero-inner { padding:5rem 5vw 4rem; display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:flex-end; }
+    .bsp-hero-inner .eyebrow { font-size:.52rem; letter-spacing:.6em; text-transform:uppercase; color:rgba(255,255,255,.3); margin-bottom:1.2rem; }
+    .bsp-hero-inner h1 { font-family:var(--serif); font-size:clamp(3rem,6vw,6.5rem); font-weight:500; line-height:1.05; color:rgba(255,255,255,.9); }
+    .bsp-hero-right { padding-bottom:.5rem; }
+    .bsp-hero-right p { font-size:.84rem; line-height:1.95; color:rgba(255,255,255,.4); margin-bottom:2.5rem; }
+    .bsp-hero-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; padding-top:2.5rem; border-top:1px solid rgba(255,255,255,.1); }
+    .bsp-stat-val { display:block; font-family:var(--serif); font-size:2.4rem; font-weight:500; color:rgba(255,255,255,.85); margin-bottom:.3rem; }
+    .bsp-stat-label { font-size:.48rem; letter-spacing:.35em; text-transform:uppercase; color:rgba(255,255,255,.28); }
+
+    /* INTRO STRIP */
+    .bsp-intro { border-top:2px solid var(--silver); border-bottom:2px solid var(--silver); padding:4rem 5vw; display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
+    .bsp-intro-item { padding:2rem 3rem 2rem 0; border-right:1px solid rgba(158,158,144,.3); }
+    .bsp-intro-item:last-child { border-right:none; padding-right:0; padding-left:2rem; }
+    .bsp-intro-item:first-child { padding-left:0; }
+    .bsp-intro-num { font-size:.44rem; letter-spacing:.5em; text-transform:uppercase; color:var(--muted); margin-bottom:.8rem; display:block; }
+    .bsp-intro-title { font-family:var(--serif); font-size:1.2rem; font-weight:400; color:var(--ink); margin-bottom:.6rem; }
+    .bsp-intro-text { font-size:.74rem; line-height:1.85; color:var(--muted); }
+
+    /* PROJECT GRID */
+    .bsp-grid-section { padding:6rem 5vw; }
+    .bsp-grid-head { margin-bottom:4rem; }
+    .bsp-projects { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(158,158,144,.25); }
+
+    /* Project card */
+    .bsp-card { background:var(--cream); overflow:hidden; cursor:pointer; }
+    .bsp-card:hover .bsp-img-inner { transform:scale(1.03); }
+    .bsp-img { overflow:hidden; position:relative; background:var(--cream3); }
+    .bsp-img-inner { width:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1rem; transition:transform .8s ease; }
+    .bsp-img-inner svg { opacity:.13; }
+    .bsp-img-inner span { font-size:.46rem; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
+    .bsp-card-tall  .bsp-img { aspect-ratio:4/5; }
+    .bsp-card-wide  .bsp-img { aspect-ratio:16/9; }
+    .bsp-card-info { padding:2.5rem 2.8rem; border-top:2px solid var(--silver); }
+    .bsp-card-tag { font-size:.46rem; letter-spacing:.5em; text-transform:uppercase; color:var(--muted); margin-bottom:.8rem; }
+    .bsp-card-title { font-family:var(--serif); font-size:clamp(1.5rem,2.5vw,2.2rem); font-weight:500; color:var(--ink); margin-bottom:1rem; line-height:1.2; }
+    .bsp-card-desc { font-size:.78rem; line-height:1.9; color:var(--muted); margin-bottom:1.8rem; }
+    .bsp-card-meta { display:flex; gap:3rem; padding-top:1.5rem; border-top:1px solid rgba(158,158,144,.3); }
+    .bsp-meta-item label { display:block; font-size:.42rem; letter-spacing:.45em; text-transform:uppercase; color:var(--muted); margin-bottom:.3rem; }
+    .bsp-meta-item span { font-size:.78rem; color:var(--ink); }
+
+    /* FULL-WIDTH FEATURE */
+    .bsp-feature { display:grid; grid-template-columns:1fr 1fr; min-height:600px; border-top:2px solid var(--silver); }
+    .bsp-feature-img { background:var(--cream3); overflow:hidden; display:flex; align-items:center; justify-content:center; min-height:500px; }
+    .bsp-feature-img:hover .bsp-img-inner { transform:scale(1.03); }
+    .bsp-feature-text { padding:6rem 5vw; background:var(--navy); display:flex; flex-direction:column; justify-content:center; }
+    .bsp-feature-text .eyebrow { color:rgba(255,255,255,.3); }
+    .bsp-feature-text h2 { font-family:var(--serif); font-size:clamp(2.4rem,4vw,4rem); font-weight:500; color:rgba(255,255,255,.9); line-height:1.12; margin-bottom:2rem; }
+    .bsp-feature-text p { font-size:.82rem; line-height:1.95; color:rgba(255,255,255,.4); margin-bottom:1rem; }
+    .bsp-feature-specs { margin:2.5rem 0; display:flex; flex-direction:column; gap:.85rem; }
+    .bsp-spec-row { display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,.07); padding-bottom:.85rem; }
+    .bsp-spec-k { font-size:.46rem; letter-spacing:.35em; text-transform:uppercase; color:rgba(255,255,255,.28); }
+    .bsp-spec-v { font-size:.76rem; color:rgba(255,255,255,.7); }
+
+    /* PROCESS SECTION */
+    .bsp-process { background:var(--cream2); padding:7rem 5vw; border-top:2px solid var(--silver); }
+    .bsp-process-head { max-width:600px; margin-bottom:5rem; }
+    .bsp-steps { display:grid; grid-template-columns:repeat(5,1fr); gap:0; }
+    .bsp-step { padding:2.5rem 2rem 2.5rem 0; border-right:1px solid rgba(158,158,144,.3); position:relative; }
+    .bsp-step:last-child { border-right:none; }
+    .bsp-step-num { font-size:.44rem; letter-spacing:.5em; text-transform:uppercase; color:var(--muted); margin-bottom:1rem; display:block; }
+    .bsp-step-title { font-family:var(--serif); font-size:1.15rem; font-weight:400; color:var(--ink); margin-bottom:.8rem; }
+    .bsp-step-text { font-size:.72rem; line-height:1.85; color:var(--muted); }
+
+    /* TESTIMONIALS */
+    .bsp-testimonials { padding:7rem 5vw; border-top:2px solid var(--silver); }
+    .bsp-test-head { max-width:480px; margin-bottom:4rem; }
+    .bsp-test-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(158,158,144,.25); }
+    .bsp-test-card { background:var(--cream); padding:3rem 2.5rem; }
+    .bsp-test-quote { font-family:var(--serif); font-size:1.15rem; font-style:italic; font-weight:400; color:var(--ink); line-height:1.7; margin-bottom:2rem; }
+    .bsp-test-rule { width:24px; height:1px; background:var(--silver); margin-bottom:1.5rem; }
+    .bsp-test-name { font-size:.56rem; font-weight:400; letter-spacing:.2em; text-transform:uppercase; color:var(--ink); margin-bottom:.3rem; }
+    .bsp-test-location { font-size:.5rem; letter-spacing:.15em; text-transform:uppercase; color:var(--muted); }
+
+    /* CTA */
+    .bsp-cta { background:var(--navy); padding:8rem 5vw; display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:center; border-top:2px solid var(--silver); }
+    .bsp-cta h2 { font-family:var(--serif); font-size:clamp(2.4rem,4.5vw,4.5rem); font-weight:500; color:rgba(255,255,255,.9); line-height:1.1; }
+    .bsp-cta-right p { font-size:.84rem; line-height:1.95; color:rgba(255,255,255,.4); margin-bottom:2.5rem; }
+    .bsp-cta-btns { display:flex; gap:1rem; flex-wrap:wrap; }
+
+    @media(max-width:1024px){
+      .bsp-hero-inner{grid-template-columns:1fr;gap:3rem;}
+      .bsp-intro{grid-template-columns:1fr 1fr;}
+      .bsp-intro-item:nth-child(2){border-right:none;}
+      .bsp-intro-item:nth-child(3){padding-left:0;border-right:1px solid rgba(158,158,144,.3);}
+      .bsp-intro-item:last-child{padding-left:0;}
+      .bsp-projects{grid-template-columns:1fr;}
+      .bsp-feature{grid-template-columns:1fr;}
+      .bsp-steps{grid-template-columns:1fr 1fr;}
+      .bsp-test-grid{grid-template-columns:1fr;}
+      .bsp-cta{grid-template-columns:1fr;}
+    }
+    @media(max-width:680px){
+      .bsp-intro{grid-template-columns:1fr;}
+      .bsp-intro-item{border-right:none!important;border-bottom:1px solid rgba(158,158,144,.3);padding:1.5rem 0;}
+      .bsp-steps{grid-template-columns:1fr;}
+      .bsp-step{border-right:none;border-bottom:1px solid rgba(158,158,144,.3);padding-bottom:2rem;}
+      .bsp-hero-stats{grid-template-columns:1fr 1fr;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="if-nav">
+    <a href="index.html" class="logo-wrap">
+      <div class="silver-line"></div>
+      <span class="logo">Imperial</span>
+      <span class="logo">Furniture</span>
+      <div class="silver-line"></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html"         data-page="index">Home</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="shop.html"          data-page="shop">Shop</a></li>
+      <li><a href="gallery.html"       data-page="gallery">Gallery</a></li>
+      <li><a href="bespoke.html"       data-page="bespoke" class="active">Bespoke</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="hamburger" id="ham"><span></span><span></span><span></span></div>
+  </nav>
+  <div id="mob-menu">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="bespoke.html">Bespoke</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <div class="bsp-hero">
+    <div class="bsp-hero-inner">
+      <div>
+        <p class="eyebrow">Imperial Furniture</p>
+        <h1><span class="silver">Bespoke</span><br/>Projects</h1>
+      </div>
+      <div class="bsp-hero-right">
+        <p>Every bespoke commission begins with a conversation and ends with a piece that exists nowhere else in the world. From a single chair to a complete residence — we design and build it entirely around you.</p>
+        <div class="bsp-hero-stats">
+          <div><span class="bsp-stat-val">100%</span><span class="bsp-stat-label">Made to order</span></div>
+          <div><span class="bsp-stat-val">8–24</span><span class="bsp-stat-label">Weeks per project</span></div>
+          <div><span class="bsp-stat-val">480+</span><span class="bsp-stat-label">Commissions completed</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTRO STRIP -->
+  <div class="bsp-intro">
+    <div class="bsp-intro-item">
+      <span class="bsp-intro-num">01</span>
+      <h3 class="bsp-intro-title">No catalogue</h3>
+      <p class="bsp-intro-text">Your piece does not exist until we make it. Every dimension, material and finish is chosen specifically for your space.</p>
+    </div>
+    <div class="bsp-intro-item">
+      <span class="bsp-intro-num">02</span>
+      <h3 class="bsp-intro-title">Direct access</h3>
+      <p class="bsp-intro-text">You work directly with our lead craftsmen — not a sales team. The people you speak to are the people who build your furniture.</p>
+    </div>
+    <div class="bsp-intro-item">
+      <span class="bsp-intro-num">03</span>
+      <h3 class="bsp-intro-title">Complete transparency</h3>
+      <p class="bsp-intro-text">Fixed quote before production begins. No surprises. We document every stage and invite you to visit the workshop at any point.</p>
+    </div>
+    <div class="bsp-intro-item">
+      <span class="bsp-intro-num">04</span>
+      <h3 class="bsp-intro-title">Lifetime guarantee</h3>
+      <p class="bsp-intro-text">Every piece we make carries a lifetime structural guarantee. If something fails — regardless of when — we repair or replace it.</p>
+    </div>
+  </div>
+
+  <!-- PROJECTS GRID -->
+  <div class="bsp-grid-section">
+    <div class="bsp-grid-head reveal">
+      <p class="eyebrow">Recent Commissions</p>
+      <h2 class="s-title">Projects built<br/>from <span class="silver">nothing but an idea</span></h2>
+    </div>
+
+    <div class="bsp-projects">
+
+      <div class="bsp-card bsp-card-tall reveal" style="transition-delay:.05s">
+        <div class="bsp-img">
+          <div class="bsp-img-inner">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="0.6"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+            <span>Your photo here</span>
+          </div>
+        </div>
+        <div class="bsp-card-info">
+          <p class="bsp-card-tag">Private Residence · Mayfair, London</p>
+          <h3 class="bsp-card-title">The <span class="silver">Hadley</span> Study</h3>
+          <p class="bsp-card-desc">A complete study commission: bespoke library wall, partner desk, reading chair and ottoman. Solid walnut with hand-stitched saddle leather. Designed around a 4.2m ceiling height.</p>
+          <div class="bsp-card-meta">
+            <div class="bsp-meta-item"><label>Materials</label><span>Black walnut · Saddle leather</span></div>
+            <div class="bsp-meta-item"><label>Timeline</label><span>18 weeks</span></div>
+            <div class="bsp-meta-item"><label>Scope</label><span>6 pieces</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bsp-card bsp-card-tall reveal" style="transition-delay:.1s">
+        <div class="bsp-img">
+          <div class="bsp-img-inner">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="0.6"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+            <span>Your photo here</span>
+          </div>
+        </div>
+        <div class="bsp-card-info">
+          <p class="bsp-card-tag">Private Villa · Geneva, Switzerland</p>
+          <h3 class="bsp-card-title">The <span class="silver">Lac Léman</span> Dining Suite</h3>
+          <p class="bsp-card-desc">A twelve-seat dining table in book-matched Macassar ebony with a polished steel base. Paired with twelve hand-upholstered dining chairs in Hermès-grade calfskin.</p>
+          <div class="bsp-card-meta">
+            <div class="bsp-meta-item"><label>Materials</label><span>Ebony · Calfskin · Steel</span></div>
+            <div class="bsp-meta-item"><label>Timeline</label><span>22 weeks</span></div>
+            <div class="bsp-meta-item"><label>Scope</label><span>13 pieces</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bsp-card bsp-card-wide reveal" style="transition-delay:.05s">
+        <div class="bsp-img">
+          <div class="bsp-img-inner">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="0.6"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+            <span>Your photo here</span>
+          </div>
+        </div>
+        <div class="bsp-card-info">
+          <p class="bsp-card-tag">Penthouse · One Hyde Park, London</p>
+          <h3 class="bsp-card-title">The <span class="silver">Hyde</span> Living Room</h3>
+          <p class="bsp-card-desc">Full living room commission: three-piece sofa system, two armchairs, coffee table, side tables and a custom media unit. Bleached oak and Carrara marble throughout.</p>
+          <div class="bsp-card-meta">
+            <div class="bsp-meta-item"><label>Materials</label><span>Bleached oak · Carrara marble</span></div>
+            <div class="bsp-meta-item"><label>Timeline</label><span>16 weeks</span></div>
+            <div class="bsp-meta-item"><label>Scope</label><span>9 pieces</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bsp-card bsp-card-wide reveal" style="transition-delay:.1s">
+        <div class="bsp-img">
+          <div class="bsp-img-inner">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="0.6"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+            <span>Your photo here</span>
+          </div>
+        </div>
+        <div class="bsp-card-info">
+          <p class="bsp-card-tag">Private Residence · Warsaw, Poland</p>
+          <h3 class="bsp-card-title">The <span class="silver">Królewska</span> Master Bedroom</h3>
+          <p class="bsp-card-desc">A complete bedroom commission — bed frame, two bedside tables, dressing table, wardrobe system and a custom bench at the foot of the bed. All in smoke-grey oak and aged brass.</p>
+          <div class="bsp-card-meta">
+            <div class="bsp-meta-item"><label>Materials</label><span>Smoke oak · Aged brass</span></div>
+            <div class="bsp-meta-item"><label>Timeline</label><span>14 weeks</span></div>
+            <div class="bsp-meta-item"><label>Scope</label><span>7 pieces</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FULL-WIDTH FEATURE PROJECT -->
+  <div class="bsp-feature">
+    <div class="bsp-feature-img">
+      <div class="bsp-img-inner">
+        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="0.5"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+        <span>Your photo here</span>
+      </div>
+    </div>
+    <div class="bsp-feature-text reveal">
+      <p class="eyebrow">Flagship Commission</p>
+      <h2>The <span class="silver">Dubai</span><br/>Residence</h2>
+      <p>Our most extensive commission to date — a complete 14-room residential project for a private client in the Palm Jumeirah. Every piece of furniture in the property was designed and built by Imperial Furniture over a 24-month period.</p>
+      <p>From the entrance hall console to the master bedroom wardrobe system, every material was sourced personally by our lead craftsmen and approved by the client before a single joint was cut.</p>
+      <div class="bsp-feature-specs">
+        <div class="bsp-spec-row"><span class="bsp-spec-k">Location</span><span class="bsp-spec-v">Palm Jumeirah, Dubai</span></div>
+        <div class="bsp-spec-row"><span class="bsp-spec-k">Timeline</span><span class="bsp-spec-v">24 months</span></div>
+        <div class="bsp-spec-row"><span class="bsp-spec-k">Pieces produced</span><span class="bsp-spec-v">84 individual pieces</span></div>
+        <div class="bsp-spec-row"><span class="bsp-spec-k">Primary materials</span><span class="bsp-spec-v">Rift-cut white oak · Onyx · Burnished bronze</span></div>
+        <div class="bsp-spec-row"><span class="bsp-spec-k">Team</span><span class="bsp-spec-v">12 craftsmen, 2 designers</span></div>
+      </div>
+      <a href="index.html#contact" class="btn btn-light" style="align-self:flex-start">Discuss a similar project</a>
+    </div>
+  </div>
+
+  <!-- BESPOKE PROCESS -->
+  <div class="bsp-process">
+    <div class="bsp-process-head reveal">
+      <p class="eyebrow">The Bespoke Process</p>
+      <h2 class="s-title">How a bespoke<br/>commission <span class="silver">comes to life</span></h2>
+    </div>
+    <div class="bsp-steps">
+      <div class="bsp-step reveal" style="transition-delay:.04s">
+        <span class="bsp-step-num">01</span>
+        <h3 class="bsp-step-title">Initial Meeting</h3>
+        <p class="bsp-step-text">We meet at the atelier or on site. We listen to your vision, study the space and understand your way of living. No catalogue, no pressure.</p>
+      </div>
+      <div class="bsp-step reveal" style="transition-delay:.09s">
+        <span class="bsp-step-num">02</span>
+        <h3 class="bsp-step-title">Design & Proposal</h3>
+        <p class="bsp-step-text">Our designers produce hand-drawn sketches and 3D renders. We present material samples in person. You iterate freely until every detail is right.</p>
+      </div>
+      <div class="bsp-step reveal" style="transition-delay:.14s">
+        <span class="bsp-step-num">03</span>
+        <h3 class="bsp-step-title">Fixed Quote</h3>
+        <p class="bsp-step-text">Once the design is approved, you receive a fixed price and timeline. Nothing changes from this point without your written consent.</p>
+      </div>
+      <div class="bsp-step reveal" style="transition-delay:.19s">
+        <span class="bsp-step-num">04</span>
+        <h3 class="bsp-step-title">Workshop Production</h3>
+        <p class="bsp-step-text">Your piece is built entirely by hand in our London workshop. We photograph and document each stage. You are welcome to visit at any point.</p>
+      </div>
+      <div class="bsp-step reveal" style="transition-delay:.24s">
+        <span class="bsp-step-num">05</span>
+        <h3 class="bsp-step-title">Delivery & Install</h3>
+        <p class="bsp-step-text">We deliver and install personally. We do not use couriers or third-party installers. The piece arrives in white-glove condition, every time.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div class="bsp-testimonials">
+    <div class="bsp-test-head reveal">
+      <p class="eyebrow">Client Words</p>
+      <h2 class="s-title">What our clients<br/><span class="silver">say</span></h2>
+    </div>
+    <div class="bsp-test-grid">
+      <div class="bsp-test-card reveal" style="transition-delay:.05s">
+        <p class="bsp-test-quote">"The study they built for us is unlike anything I have ever seen. I had an idea — they turned it into something I couldn't have imagined. Fourteen years later it still looks perfect."</p>
+        <div class="bsp-test-rule"></div>
+        <p class="bsp-test-name">J. Harrington</p>
+        <p class="bsp-test-location">Mayfair, London</p>
+      </div>
+      <div class="bsp-test-card reveal" style="transition-delay:.1s">
+        <p class="bsp-test-quote">"Working with Imperial is completely different to any other furniture maker I've used. They actually listen. The dining table they built for our Geneva property is the centrepiece of the house."</p>
+        <div class="bsp-test-rule"></div>
+        <p class="bsp-test-name">M. Fontaine</p>
+        <p class="bsp-test-location">Geneva, Switzerland</p>
+      </div>
+      <div class="bsp-test-card reveal" style="transition-delay:.15s">
+        <p class="bsp-test-quote">"The transparency throughout the process was extraordinary. Fixed price, fixed timeline, no surprises. The result exceeded everything we discussed at the first meeting."</p>
+        <div class="bsp-test-rule"></div>
+        <p class="bsp-test-name">A. Kowalski</p>
+        <p class="bsp-test-location">Warsaw, Poland</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="bsp-cta">
+    <div class="reveal">
+      <h2>Ready to begin<br/>your <span class="silver">commission?</span></h2>
+    </div>
+    <div class="bsp-cta-right reveal" style="transition-delay:.15s">
+      <p>Every bespoke project starts with a single conversation. Tell us what you have in mind — even if it's just a feeling or a rough idea — and we will take it from there. No obligation, no pressure.</p>
+      <div class="bsp-cta-btns">
+        <a href="index.html#contact" class="btn btn-light">Start a conversation</a>
+        <a href="gallery.html" class="btn" style="color:rgba(255,255,255,.3);letter-spacing:.35em;font-size:.56rem;">View Gallery →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="if-footer">
+    <div class="ft-top-line"></div>
+    <div class="ft-grid">
+      <div>
+        <div class="ft-logo-block">
+          <div class="silver-line"></div>
+          <span class="ft-logo">Imperial Furniture</span>
+          <div class="silver-line"></div>
+        </div>
+        <p class="ft-brand-text">Luxury furniture born from a passion for craft.<br/>Every project unique. Every piece — for a lifetime.</p>
+      </div>
+      <div class="ft-col"><h4>Navigation</h4><ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="bespoke.html">Bespoke</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul></div>
+      <div class="ft-col"><h4>Collections</h4><ul>
+        <li><a href="shop.html">Noir</a></li>
+        <li><a href="shop.html">Blanc Ivoire</a></li>
+        <li><a href="shop.html">Grand Salon</a></li>
+        <li><a href="bespoke.html">Bespoke</a></li>
+      </ul></div>
+      <div class="ft-col"><h4>Address</h4><ul>
+        <li><a href="#">14 Chiltern Street</a></li>
+        <li><a href="#">London W1U 7PY</a></li>
+        <li><a href="tel:+442071234567">+44 20 7123 4567</a></li>
+        <li><a href="mailto:atelier@imperialfurniture.co.uk">atelier@imperialfurniture.co.uk</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bottom">
+      <p>&copy; 2025 Imperial Furniture. All rights reserved.</p>
+      <p>Privacy Policy &nbsp;&middot;&nbsp; Portfolio</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var ham = document.getElementById('ham');
+      var mob = document.getElementById('mob-menu');
+      if(ham && mob){
+        ham.addEventListener('click', function(){ mob.classList.toggle('open'); });
+        mob.querySelectorAll('a').forEach(function(a){
+          a.addEventListener('click', function(){ mob.classList.remove('open'); });
+        });
+      }
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('in'); });
+      },{threshold:0.1});
+      document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+    })();
+  </script>
+</body>
+</html>
